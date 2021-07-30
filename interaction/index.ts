@@ -4,7 +4,6 @@ import {
   InteractionResponseType,
   verifyKey,
 } from "discord-interactions";
-import * as request from "request";
 
 const CLIENT_PUBLIC_KEY = process.env.CLIENT_PUBLIC_KEY;
 
