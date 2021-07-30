@@ -1,0 +1,6 @@
+GET https://zenn-slash-interaction.azurewebsites.net/api/interaction HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "ninisan"
+}
