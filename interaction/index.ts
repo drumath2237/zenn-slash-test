@@ -27,14 +27,11 @@ const httpTrigger: AzureFunction = async function (
 
   const interaction = req.body;
   if (interaction && interaction.type === InteractionType.APPLICATION_COMMAND) {
-    const interactionId = req.body.id;
-    const interactionToken = req.body.token;
     const greetingWord = req.body.data.options[0].value;
     const username = req.body.member.user.username;
 
-    const url = `https://discord.com/api/v8/interactions/${interactionId}/${interactionToken}/callback`;
-
-    request.post(url, {
+    context.res = {
+      status: 200,
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,10 +42,6 @@ const httpTrigger: AzureFunction = async function (
           content: `${greetingWord}, ${username}`,
         },
       }),
-    });
-
-    context.res = {
-      status: 204,
     };
   } else {
     context.res = {
